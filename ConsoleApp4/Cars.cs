@@ -13,10 +13,11 @@ namespace ConsoleApp4
         public int YearBuild;
         public const float MaxSpeed = 320;
         public int Run;
-        public int cark;
-        public int humkey;
         public bool StartEngine;
         public bool CarKey;
+
+        public string HumanKey;
+        public string RightKey;
 
         public Vector3 Position;
 
@@ -27,9 +28,8 @@ namespace ConsoleApp4
             YearBuild = 0000;
             Run = 0;
             StartEngine = false;
-            //cark = 0110;
-            //humkey = 0000;
-            //CarKey = false;
+            HumanKey = "0000";
+            RightKey = "0100";
         }
         public Cars(string model, Vector3 pos)
         {
@@ -39,38 +39,32 @@ namespace ConsoleApp4
             Run = 0;
             StartEngine = false;
         }
-        //public void KeyIn()
-        //{
-        //    Console.WriteLine("напишите 4x значный код ключа");
-        //    humkey = Convert.ToInt32(Console.ReadLine());
-        //    if (cark == humkey)
-        //    {
-        //        Console.WriteLine("Ключ вставлен");
-        //        CarKey = true;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Ключ не подходит");
-        //    }
-
-        //}
-        //public void KeyOut()
-        //{
-        //    CarKey = false;
-        //    Console.WriteLine("Ключ был вынут");
-        //}
+        public void CheckKey()
+        {
+            string RightKey = "0100";
+            Console.WriteLine("Вставьте ключ в замок зажигания(4 цифры 0 и 1)");
+            string HumanKey = Console.ReadLine();
+            if (HumanKey == RightKey)
+            {
+                CarKey = true;
+            }
+            else
+            {
+                Console.WriteLine("Ключ неверный");
+            }
+        }
         public void Start()
         {
-            //if (!CarKey)
-            //    return;
+            if (!CarKey)
+                return;
             Console.WriteLine($"машина {Model} включилась");
             StartEngine = true;
         }
 
         public void Off()
         {
-            //if (!CarKey)
-            //    return;
+            if (!CarKey)
+                return;
             Console.WriteLine($"машина {Model} выключилась");
             StartEngine = false;
         }
@@ -87,7 +81,7 @@ namespace ConsoleApp4
 
             Console.WriteLine($"Машина {Model} передвинулась на X: {Position.X}, Y: {Position.Y}, Z: {Position.Z}");
         }
-
+        
         public string GetInfo() => $"Тачка {Model}. {YearBuild} - год производства. Двигатель {StartEngine}. Позиция = X: {Position.X}, Y: {Position.Y}, Z: {Position.Z}. Пробег = {Run}";
     }
 }
