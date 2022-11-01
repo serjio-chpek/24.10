@@ -55,18 +55,37 @@ namespace ConsoleApp4
         }
         public void Start()
         {
-            if (!CarKey)
+            if (!CarKey && StartEngine == true)
+            {
                 return;
-            Console.WriteLine($"машина {Model} включилась");
-            StartEngine = true;
+            }
+            else if (CarKey && StartEngine == true)
+            {
+                Console.WriteLine("Машина уже заведена"); 
+            }
+            else
+            {
+                Console.WriteLine($"Машина {Model} завелась");
+                StartEngine = true;
+            }
+
         }
 
         public void Off()
         {
-            if (!CarKey)
+            if (!CarKey && StartEngine == false)
+            {
                 return;
-            Console.WriteLine($"машина {Model} выключилась");
-            StartEngine = false;
+            }
+            else if (CarKey && StartEngine == false)
+            {
+                Console.WriteLine("Машина уже выключена");
+            }
+            else
+            {
+                Console.WriteLine($"Машина {Model} выключилась");
+                StartEngine = false;
+            }
         }
 
         public void Move(Vector3 vector)

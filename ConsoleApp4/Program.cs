@@ -21,6 +21,6 @@ bmw.Start();
 bmw.Move(new Vector3(1, 3, 5));
 bmw.Move(new Vector3(1, 3, 5));
 Console.WriteLine(bmw.GetInfo());
-
+bmw.Start();
 bmw.Off();
-
+bmw.Off();
